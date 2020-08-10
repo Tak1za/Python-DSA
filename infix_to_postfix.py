@@ -1,6 +1,6 @@
 from pythonds import Stack
 
-prec = {"*": 3, "/": 3, "+": 2, "-": 2, "(": 1}
+prec = {"**": 4, "*": 3, "/": 3, "+": 2, "-": 2, "(": 1}
 
 def toPostfix(infixString):
     s = Stack()
@@ -8,7 +8,7 @@ def toPostfix(infixString):
     infixString = infixString.split()
 
     for i in infixString:
-        if i in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" or i in "0123456789":
+        if i.isalnum():
             output.append(i)
         elif i == '(':
            s.push(i)
@@ -28,3 +28,5 @@ def toPostfix(infixString):
 
 print(toPostfix("A * B + C * D"))
 print(toPostfix("( A + B ) * C - ( D - E ) * ( F + G )"))
+print(toPostfix("10 + 3 * 5 / ( 16 - 4 )"))
+print(toPostfix("5 * 3 ** ( 4 - 2 )"))
